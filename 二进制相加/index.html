@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * @param {string} a
+			 * @param {string} b
+			 * @return {string}
+			 */
+			var addBinary = function(a, b) {
+
+
+				//    var s = '';
+				//    a.length>b.length?s = a:s=b;
+				var aindex = a.length - 1;
+				var bindex = b.length - 1; 
+				var j = false;//标记下次是否进一
+				var str = ''
+				//从末尾开始计算
+				while (aindex >= 0 || bindex >= 0) {
+					var aval = parseInt(a[aindex])
+					var bval = parseInt(b[bindex])
+					if (!aval) { //由于字符串的长度可能不一致,所以短的都为零
+						aval = 0
+					}
+					if (!bval) {
+						bval = 0
+					}
+
+					if (aval + bval == 2) { //等于2的话先判断是否有进一的情况
+						if (j) {
+							str = '1' + str;
+						} else {
+							str = '0' + str
+						}
+						if (aindex <= 0 && bindex <= 0) {判断如果第一位也要进一则加一
+							str = '1' + str;
+						}
+						j = true  //下一次要进一
+					} else { //不等于2
+						if (j) {//如果进一则加一
+							if (aval + bval + 1 == 2) {//在判断加一的值是否进一
+								j = true;
+								str = '0' + str;
+								if (aindex <= 0 && bindex <= 0) {
+									str = '1' + str;
+								}
+							} else {
+								j = false
+								str = aval + bval + 1 + str;
+							}
+
+						} else {
+							j = false
+							str = aval + bval + str;
+						}
+
+					}
+					aindex--;
+					bindex--
+				}
+
+				return str
+			};
+		</script>
+	</body>
+</html>
