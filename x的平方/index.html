@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * @param {number} x
+			 * @return {number}
+			 */
+			//利用二分法来解决.
+			var mySqrt = function(x) {
+			    var mid;
+			    var start = 0;
+			    var end = x;
+			    while(end>=start){
+					//取得中间值
+			       mid = Math.ceil((start+end)/2);  
+			       if(mid*mid>x){//判断中间值的平方与目标值的大小,如果大则将end设为中间值减一反之start设为中间值加一
+			         end = mid-1
+			       }
+			       if(mid*mid<x){
+			         start = mid+1
+			       }
+				   //如果满足对应值的平方小于等于目标值同时加一的平方大于对应值则是满足条件的值
+			        if(x>=mid*mid&&x<(mid+1)*(mid+1)){
+			            return mid
+			        }
+			    }
+			
+			    
+			};
+		</script>
+	</body>
+</html>
