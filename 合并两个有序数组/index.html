@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+	/**
+	 * @param {number[]} nums1
+	 * @param {number} m
+	 * @param {number[]} nums2
+	 * @param {number} n
+	 * @return {void} Do not return anything, modify nums1 in-place instead.
+	 */
+	var merge = function(nums1, m, nums2, n) {
+	    nums1.splice(m,n) //先将第一个数组要加入的数据删除.
+	   for(var i=0;i<n;i++){//一次去除第二个数组的每个元素与第一个的数组做对比
+	       for(var j=0;j<=m;j++){
+	            if(j==m){  //如果等于m则是全部大于第一个数组的元素则在最后插入
+	                 nums1.splice(j,0,nums2[i])
+	                 m++ //同时m个数++
+	                 break
+	               }
+	           if(nums2[i]<=nums1[j]){//如果比第一个数组小的值则在对应的位置插入
+	               nums1.splice(j,0,nums2[i])
+	               m++//同时m个数++
+	               break;
+	           }
+	       }
+	   }
+	   return nums1
+	};
+		</script>
+	</body>
+</html>

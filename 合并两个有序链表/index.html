@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * Definition for singly-linked list.
+			 * function ListNode(val) {
+			 *     this.val = val;
+			 *     this.next = null;
+			 * }
+			 */
+			/**
+			 * @param {ListNode} l1
+			 * @param {ListNode} l2
+			 * @return {ListNode}
+			 */
+			var mergeTwoLists = function(l1, l2) {
+			    var _l1 = l1;
+			    if(l1==null){
+			     return l2
+			    }
+			    if(l2==null){
+			        return l1
+			    }
+			    while(_l1!=null){//一次遍历第一个链表取值与第二个链表做对比,插入到第二个链表
+			        var _l2 = l2;
+			        var pre = null
+			        while(_l2!=null){
+			            if(_l1.val<=_l2.val&&!pre){//如果小于等于的话则并且没有上一个元素的话则是头部插入
+			                var newhead = new ListNode(_l1.val);
+			                newhead.next = _l2;
+			                l2 = newhead
+			                break;
+			            }
+			            if(_l1.val<=_l2.val&&pre){//如果pre存在,则插入在pre与当前的——l2之间
+			                 var newhead = new ListNode(_l1.val);
+			                pre.next = newhead;
+			                newhead.next = _l2;
+			                break;
+			            }
+			            if(_l2.next==null){//都不满足在插入最后
+			                var newhead = new ListNode(_l1.val);
+			                _l2.next = newhead
+			                break;
+			            }
+			            pre = _l2;
+			            _l2 = _l2.next;
+			        }
+			      _l1 = _l1.next;
+			    }
+			    return l2
+			};
+		</script>
+	</body>
+</html>
