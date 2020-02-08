@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {number[]} nums
+		 * @return {number}
+		 */
+		var maxSubArray = function(nums) {
+		    if(nums.length==0){
+		        return null
+		    }
+		    var max = nums[0]
+		    var sum = nums[0]
+		    for(var i=1;i<nums.length;i++){
+		        sum+=nums[i];//依次遍历求和
+		        sum = Math.max(nums[i],sum);//求出当前数与和的最大值继续下一次求和
+		        max = Math.max(sum,max)//保存最大和
+		    }
+		    return max
+		};
+		</script>
+	</body>
+</html>
