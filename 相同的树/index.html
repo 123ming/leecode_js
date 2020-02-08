@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * Definition for a binary tree node.
+			 * function TreeNode(val) {
+			 *     this.val = val;
+			 *     this.left = this.right = null;
+			 * }
+			 */
+			/**
+			 * @param {TreeNode} p
+			 * @param {TreeNode} q
+			 * @return {boolean}
+			 */
+			var isSameTree = function(p, q) {
+				if (p != null && q != null) { //递归遍历树
+					var b1 = isSameTree(p.left, q.left)
+					if (p.val != q.val) {//如果两个值不等则证明不相同
+						return false
+					}
+					var b2 = isSameTree(p.right, q.right)
+					if (b1 && b2) { //如果左右都为true则返回true,否则为false
+						return true
+					} else {
+						return false
+					}
+
+				} else {
+					if (p == null && q == null) {//如果两个都为空则相等,否则返回false
+						return true
+					} else {
+						return false
+					}
+
+				}
+			};
+		</script>
+	</body>
+</html>
