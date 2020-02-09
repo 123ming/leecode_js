@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var isSymmetric = function(root) {
+				function loop(n1, n2) { //遍历左右子树
+					if (n1 != null && n2 != null) {
+						var b1 = loop(n1.left, n2.right)//因为对此,所以左树的左边等于有树的右边
+						var b2 = loop(n1.right, n2.left)//同上
+						if (n1.val != n2.val) {//如果两边不等则不对称
+							return false
+						}
+						return b1 && b2;//遍历完左右子树的所有值对称才是对称树
+					} else {
+						return n1 == null && n2 == null//遍历到最后都为null则是一边对称,否则不对称
+					}
+
+				}
+				if (root == null) {
+					return true
+				}
+				if (root.left == null && root.right == null) {
+					return true
+				}
+				if (root.left == null || root.right == null) {
+					return false
+				}
+				return loop(root.left, root.right)
+			};
+		</script>
+	</body>
+</html>
