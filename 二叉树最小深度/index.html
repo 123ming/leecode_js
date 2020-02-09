@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * Definition for a binary tree node.
+		 * function TreeNode(val) {
+		 *     this.val = val;
+		 *     this.left = this.right = null;
+		 * }
+		 */
+		/**
+		 * @param {TreeNode} root
+		 * @return {number}
+		 */
+		var minDepth = function(root) {
+		         //递归遍历
+		           if (root == null) {
+						return 0
+		           }
+					if (root.left == null && root.right != null) {//如果左子树为空的情况
+						return 1 + minDepth(root.right)
+					}
+					if (root.right == null && root.left != null) {//如果右子树为空的情况
+						return 1 + minDepth(root.left);
+					}//两个都有则找出最小值
+					return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+		   
+		};
+		</script>
+	</body>
+</html>
