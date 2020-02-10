@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * Definition for a binary tree node.
+			 * function TreeNode(val) {
+			 *     this.val = val;
+			 *     this.left = this.right = null;
+			 * }
+			 */
+			/**
+			 * @param {TreeNode} root
+			 * @param {number} sum
+			 * @return {boolean}
+			 */
+			var hasPathSum = function(root, sum) {
+			    if(root==null){
+			        return false
+			    }
+			    if(root.left==null&&root.right==null){ //判断最后一层如果sum-root.val是0的话则满足要求返回true否则false
+			        return sum-root.val==0
+			    }
+			    return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val)//当任意子树为true则存在满足条件的
+			};
+		</script>
+	</body>
+</html>
