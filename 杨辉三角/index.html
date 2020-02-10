@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * @param {number} numRows
+			 * @return {number[][]}
+			 */
+			var generate = function(numRows) {
+			    var ar = []
+			    for(var i=0;i<numRows;i++){
+			        if(i==0){ //先考虑01的情况
+			            ar[i] = [1]
+			            continue
+			        }
+			        if(i==1){
+			            ar[i] = [1,1]
+			            continue
+			        }
+			        ar[i] = [];
+			        ar[i].push(1);//首末尾都为1
+			        for(var j=0;j<ar[i-1].length-1;j++){ //其余的为上一个的挨个的和
+			           var sum = ar[i-1][j]+ar[i-1][j+1];
+			           ar[i].push(sum)
+			        }
+			        ar[i].push(1)
+			    }
+			    return ar
+			};
+		</script>
+	</body>
+</html>
