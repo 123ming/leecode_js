@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * @param {number} rowIndex
+			 * @return {number[]}
+			 */
+			var getRow = function(rowIndex) {
+				//零和一直接处理
+			    if(rowIndex==0){
+			        return [1]
+			    }
+			    if(rowIndex==1){
+			        return [1,1]
+			    }
+				
+			    var ar = [[1],[1,1]] //从而以后每行以一开头,以一结尾,中间为上一行的相邻的和
+			    for(var i=2;i<=rowIndex;i++){
+			        ar[i] = []
+			        ar[i].push(1);
+			        for(var j=0;j<ar[i-1].length-1;j++){
+			            ar[i].push(ar[i-1][j]+ar[i-1][j+1])
+			            
+			        }
+			        ar[i].push(1)
+			    }//返回对应的行
+			    return ar[rowIndex]
+			};
+		</script>
+	</body>
+</html>
