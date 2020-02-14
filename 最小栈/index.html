@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * initialize your data structure here.
+			 */
+			///思路,可以通过空间来换取时间,每次push的时候加入两个元素,即当前的值与最小值.
+			var MinStack = function() {
+			    this.items = [];
+			    this.min;
+			};
+			
+			/** 
+			 * @param {number} x
+			 * @return {void}
+			 */
+			MinStack.prototype.push = function(x) {
+			    if(this.items.length==0){
+			        this.items.push(x);
+			        this.items.push(x)
+			    }else{
+			        this.items.push(x)
+			        var length = this.items.length
+			        if(this.items[length-1]<=this.items[length-2]){
+			           this.items.push(this.items[length-1])
+			        }else{
+			           this.items.push(this.items[length-2])
+			        }
+			    }
+			};
+			
+			/**
+			 * @return {void}
+			 */
+			MinStack.prototype.pop = function() {
+			  this.items.pop();
+			  this.items.pop();
+			};
+			
+			/**
+			 * @return {number}
+			 */
+			MinStack.prototype.top = function() {
+			    return this.items[this.items.length-2];
+			};
+			
+			/**
+			 * @return {number}
+			 */
+			MinStack.prototype.getMin = function() {
+			    return this.items[this.items.length-1]
+			};
+			
+			/** 
+			 * Your MinStack object will be instantiated and called as such:
+			 * var obj = new MinStack()
+			 * obj.push(x)
+			 * obj.pop()
+			 * var param_3 = obj.top()
+			 * var param_4 = obj.getMin()
+			 */
+		</script>
+	</body>
+</html>
