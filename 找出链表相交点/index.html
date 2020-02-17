@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * Definition for singly-linked list.
+		 * function ListNode(val) {
+		 *     this.val = val;
+		 *     this.next = null;
+		 * }
+		 */
+		
+		/**
+		 * @param {ListNode} headA
+		 * @param {ListNode} headB
+		 * @return {ListNode}
+		 */
+		//思路:先便利两个链表到末尾,谁先到末尾就将链表指向另一个链表.如果两个节点相等则相交.
+		var getIntersectionNode = function(headA, headB) {
+		     var _headA = headA;
+		     var _headB = headB;
+		     if(_headB==null||_headB==null){
+		         return null
+		     }
+		     while(_headA!=_headB){
+		         _headA==null?_headA=headB:_headA = _headA.next;
+		         _headB==null?_headB=headA:_headB = _headB.next;
+		     } 
+		     return _headA
+		
+		};
+		</script>
+	</body>
+</html>
