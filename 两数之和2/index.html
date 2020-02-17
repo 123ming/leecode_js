@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * @param {number[]} numbers
+			 * @param {number} target
+			 * @return {number[]}
+			 */
+			//从两端开始遍历,如果相加比目标值大,则end--;小的话start++;相等则是目标值.
+			var twoSum = function(numbers, target) {
+			    var len = numbers.length;
+			    var start = 0;
+			    var end = len-1;
+			    while(start<end){
+			       if(numbers[start]+numbers[end]>target){
+			           end--;
+			       }
+			       if(numbers[start]+numbers[end]<target){
+			           start++;
+			       }
+			       if(numbers[start]+numbers[end]==target){
+			           return [start+1,end+1]
+			       }
+			    }
+			    return [start+1,end+1]
+			};
+		</script>
+	</body>
+</html>
