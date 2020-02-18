@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {string} s
+		 * @return {number}
+		 */
+		var titleToNumber = function(s) {
+		    var res=0;
+		    for(var i=0;i<s.length;i++){
+		        var num = s[i].charCodeAt()-64;
+		       res = num+res*26
+		    }
+		    return res;
+		};
+	</body>
+</html>
