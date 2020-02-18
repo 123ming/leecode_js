@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {number[]} nums
+		 * @return {number}
+		 */
+		//思路:摩尔投票法,现在元素最多的是大于一半的,所以可以分为两方,多方和少方,我们两两同归于尽的话,剩下的肯定是多方的
+		var majorityElement = function(nums) {
+		   var start = nums[0];
+		   var count = 1;
+		   for(var i=1;i<nums.length;i++){
+		      if(start==nums[i]){
+		          count++
+		      }else{
+		          count--;
+		          if(count==0){
+		              start = nums[i+1]
+		              count = 0;
+		          }
+		      }
+		   }
+		   return start;
+		};
+		</script>
+	</body>
+</html>
