@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {number[]} nums
+		 * @param {number} k
+		 * @return {void} Do not return anything, modify nums in-place instead.
+		 */
+		var rotate = function(nums, k) {
+		    k = k%nums.length;
+		    var endar = nums.splice(nums.length-k,k).reverse();
+		    for(let i of endar){
+		        nums.unshift(i)
+		    }
+		};
+		</script>
+	</body>
+</html>
