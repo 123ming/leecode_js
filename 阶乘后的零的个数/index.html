@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+	/**
+	 * @param {number} n
+	 * @return {number}
+	 */
+	//思路:求出其中五的个数即可
+	var trailingZeroes = function(n) {
+	    if(n==0){
+	        return 0
+	    }
+	   var count = 0;
+	   var sq = 1;
+	    while(Math.pow(5,sq)<=n){
+	        count+=Math.floor(n/Math.pow(5,sq));
+	        sq++;
+	    }
+	    return count
+	};
+	</body>
+</html>
