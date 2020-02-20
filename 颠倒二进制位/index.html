@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {number} n - a positive integer
+		 * @return {number} - a positive integer
+		 */
+		var reverseBits = function(n) {
+		    var s = ''
+		    while(n/2>0){
+		      s+=n%2;
+		      n = Math.floor(n/2)
+		    }
+		    var r = s.padEnd(32,0)
+		    return  parseInt(r,2);
+		};
+	</body>
+</html>
