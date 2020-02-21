@@ -6,8 +6,16 @@
 	</head>
 	<body>
 		<script>
-			var s = 'AA'
-			console.log(s.charCodeAt('AA'))
+			function A(){
+				this.name = 'ggg'
+			}
+			A.prototype.a = {
+				sex:"dd"
+			}
+			
+			var a = new A();
+			console.log(a.constructor)
+			console.log(A.prototype.constructor)
 		</script>
 	</body>
 </html>

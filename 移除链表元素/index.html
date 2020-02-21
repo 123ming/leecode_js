@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * Definition for singly-linked list.
+			 * function ListNode(val) {
+			 *     this.val = val;
+			 *     this.next = null;
+			 * }
+			 */
+			/**
+			 * @param {ListNode} head
+			 * @param {number} val
+			 * @return {ListNode}
+			 */
+			var removeElements = function(head, val) {
+			    var root = head;
+			    var pre = null;
+			    while(root!=null){
+			        if(!pre&&root.val==val){
+			            head = root.next;
+			            root = head;
+			            continue;
+			        }
+			        if(pre&&root.val==val){
+			            pre.next = root.next;
+			            root = pre;
+			        }
+			        pre = root;
+			        root = root.next;
+			    }
+			    return head
+			};
+		</script>
+	</body>
+</html>
