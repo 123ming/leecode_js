@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {string} s
+		 * @param {string} t
+		 * @return {boolean}
+		 */
+		var isIsomorphic = function(s, t) {
+		   var map = new Map();
+		   var map2 = new Map();
+		    for(var i=0;i<s.length;i++){
+		        if(map.has(s[i])){
+		             map.set(s[i],map.get(s[i])+i+1);
+		        }else{
+		            map.set(s[i],i)
+		        }
+		       if(map2.has(t[i])){
+		             map2.set(t[i],map2.get(t[i])+i+1);
+		        }else{
+		            map2.set(t[i],i)
+		        }
+		        if(map.get(s[i])!==map2.get(t[i])){
+		            return false;
+		        }
+		    }
+		    return true;
+		};
+	</body>
+</html>
