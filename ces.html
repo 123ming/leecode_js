@@ -6,16 +6,70 @@
 	</head>
 	<body>
 		<script>
-			function A(){
-				this.name = 'ggg'
+			function A(name){
+				this.func = []
+				this.tTime = 0;
+				var _this = this;
+				this.listen('say',{name:name});
+				this.publish();
+				setTimeout(()=>{
+					_this.publish();
+				})
 			}
-			A.prototype.a = {
-				sex:"dd"
+			A.prototype.listen = function(type,args){//first,add,say
+				if(type=='first'){
+					this.func.unshift({
+						type:type,
+						args:args
+					})
+					return
+				}
+				this.func.push({
+					type:type,
+					args:args
+				})
+				
 			}
+			A.prototype.publish = function(){
+				if(this.func.length>0){
+					var fn = this.func.shift();
+					this.run(fn);
+				}
+			}
+			A.prototype.run = function(arg){
+				var _this = this;
+				if(arg.type=='first'){
+					setTimeout(()=>{
+						_this.publish();
+					},arg.args.time)
+				}
+				if(arg.type=='add'){
+					setTimeout(()=>{
+						_this.publish();
+					},arg.args.time)
+				}
+				if(arg.type=='say'){
+					   console.log('hello '+arg.args.name)
+						_this.publish();
+				}
+			}
+			A.prototype.add = function(time){
+				this.listen('add',{time:time})
+				return this;
+			}
+			A.prototype.first = function(time){
+				this.listen('first',{time:time})
+				return this;
+			}
+			A.prototype.say = function(name){
+				this.listen('say',{name:name})
+				return this;
+			}
+		
 			
-			var a = new A();
-			console.log(a.constructor)
-			console.log(A.prototype.constructor)
+			var a = new A('lee');
+			a.add(1000).say('fn').first(2000).say('hq').add(1000).say('f');
+	
 		</script>
 	</body>
 </html>
