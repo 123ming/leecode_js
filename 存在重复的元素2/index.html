@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var containsNearbyDuplicate = function(nums, k) {
+    var map = new Map();
+  for(var i=0;i<nums.length;i++){
+     if(map.has(nums[i])){
+         var n = map.get(nums[i]);
+         if(Math.abs(n-i)<=k){
+             return true
+         }
+     } 
+     map.set(nums[i],i)
+  }
+  return false
+};
+		</script>
+	</body>
+</html>
