@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+	/**
+	 * @param {number} candies
+	 * @param {number} num_people
+	 * @return {number[]}
+	 */
+	var distributeCandies = function(candies, num_people) {
+	
+	   var now = 0;
+	   var ans = []; 
+	   var lun = 0;
+	   while(candies>0||lun<1){  
+	      if(!ans[now]){
+	          ans[now]=0
+	      }
+	      var num =  num_people*lun+(now+1)
+	      candies-num>=0?num =num:num=candies
+	      ans[now] = ans[now]+num;
+	      candies = candies-num;
+	      now++;
+	      if(now==num_people){
+	          lun++;
+	          now = 0;
+	      }
+	   }
+	   return ans;
+	};
+	</body>
+</html>
