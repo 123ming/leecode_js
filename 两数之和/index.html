@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+	/**
+	 * Definition for singly-linked list.
+	 * function ListNode(val) {
+	 *     this.val = val;
+	 *     this.next = null;
+	 * }
+	 */
+	/**
+	 * @param {ListNode} l1
+	 * @param {ListNode} l2
+	 * @return {ListNode}
+	 */
+	var addTwoNumbers = function(l1, l2) {
+	  var str1 = '';
+	  var str2 = '';
+	  var root1 = l1;
+	  while(root1!=null){
+	       str1 = root1.val+str1;
+	       root1 = root1.next;
+	  }
+	   var root2 = l2;
+	  while(root2!=null){
+	       str2 = root2.val+str2;
+	       root2 = root2.next;
+	  }
+	
+	  var r = ''
+	 
+	  if(str1.length<str2.length){
+	      var temp = str1;
+	      str1 = str2;
+	      str2 = temp;
+	  }
+	  var len = str1.length-str2.length
+	 for(var i=0;i<=len;i++){
+	     str2 = '0'+str2
+	 }
+	  var index = 0;
+	  var j = false;
+	  while(index<str1.length){
+	     var sum = parseInt(str1[str1.length-index-1])+parseInt(str2[str2.length-index-1]);
+	     if(j){
+	         sum = sum+1;
+	         sum>=10?(sum=sum-10,j=true):j = false;
+	     }else{
+	         sum>=10?(sum=sum-10,j=true):j = false;
+	     }
+	     if(index==str1.length-1&&j){
+	         r = '1'+sum+r
+	     }else{
+	          r = sum+r;
+	     }
+	    
+	     index++;
+	  }
+	  var newList = null;
+	  var next = null
+	  for(var i=r.length-1;i>=0;i--){
+	      if(newList==null){
+	          newList = new ListNode(r[i]);
+	          next = newList;
+	      }else{
+	         next.next = new ListNode(r[i]);
+	         next = next.next;
+	      }
+	
+	  }
+	return newList
+	};
+	</body>
+</html>
