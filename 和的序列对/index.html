@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {number} target
+		 * @return {number[][]}
+		 */
+		var findContinuousSequence = function(target) {
+		     if(target<3){
+		         return []
+		     }
+		     var _target = target;
+		     var r = [];
+		     var index = 1
+		     while(target>2){
+		       target = target-index;
+		       if(target%(index+1)==0&&target>0){
+		           var sum = 0;
+		           var now = target/(index+1);
+		           var ar = []
+		           while(sum!=_target&&now<=_target){
+		             sum+=now;
+		             ar.push(now);
+		             if(sum==_target){
+		                 r.unshift(ar)
+		                 break
+		             }
+		             now++;
+		           }
+		           
+		       }
+		       index++;
+		     }
+		     return r
+		};
+		</script>
+	</body>
+</html>
