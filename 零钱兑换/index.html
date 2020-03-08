@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {number[]} coins
+		 * @param {number} amount
+		 * @return {number}
+		 */
+		///dfs
+		var coinChange = function(coins, amount) {
+		  var coins = coins.sort((a,b)=>a-b);
+		  var min = Number.MAX_VALUE;
+		  function loop(index,amount,count){
+		      var coin = coins[count];
+		     if((amount%coin==0)||(amount==0&&count>=0)){
+		         min = Math.min(index+Math.floor(amount/coin),min)
+		         return 
+		     }
+		     if(index+Math.floor(amount/coin)>min||count<0){
+		         return
+		     }
+		     for(var i=Math.floor(amount/coin);i>=0;i--){
+		         loop(index+i,amount-coin*i,count-1);
+		     }
+		
+		  }
+		  loop(0,amount,coins.length-1)
+		  return min==Number.MAX_VALUE?-1:min;
+		};
+		
+		///////dp
+		/**
+		 * @param {number[]} coins
+		 * @param {number} amount
+		 * @return {number}
+		 */
+		var coinChange = function(coins, amount) {
+		  var dp = [0];
+		  for(var i=1;i<amount+1;i++){      
+		      for(var j=0;j<coins.length;j++){
+		          var coin = coins[j];
+		          if(!dp[i]){
+		              dp[i]=Number.MAX_VALUE
+		          }
+		          if(i >= coin){
+		          dp[i] = Math.min(dp[i],dp[i-coin]+1);
+		          }
+		         
+		      }
+		  }
+		  
+		  return dp[amount]==Number.MAX_VALUE?-1:dp[amount]
+		  
+		};
+	</body>
+</html>
