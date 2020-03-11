@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * @param {string} s
+		 * @param {number} numRows
+		 * @return {string}
+		 */
+		var convert = function(s, numRows) {
+		    var index = 0;//控制从上到下的索引,也就是行数
+		    var arr = [];//存取每行的字符串
+		    var one = false;//单列是否为一个字符
+		    var lenindex = numRows-1;//单列一个字符出现的首位,依次递减至一
+		   for(var i=0;i<s.length;i++){
+		       if(index>numRows-1){//意味着一列完成
+		           index = 0
+		           if(lenindex<=1){//下一列是全字符
+		               one = false;
+		               lenindex = numRows-1;
+		           }else{//下一列单字符
+		               one = true
+		           }
+		       }
+		       if(!arr[index]){
+		           arr[index]=''
+		       }
+		       if(!one){//全字符则依次加在对应的行数里面
+		           arr[index]+=s[i];
+		           index++;
+		       }else{//单字符则加在对应字符所在行数，同时index设为最大行数表示当前列结束
+		          lenindex = lenindex-1;
+		          arr[lenindex]+=s[i];
+		          index = numRows;
+		       }
+		        
+		   }
+		   var str = ''
+		   ////将数组字符串组合
+		   for(var i=0;i<arr.length;i++){
+		       str+=arr[i]
+		   }
+		   return str
+		};
+	</body>
+</html>
