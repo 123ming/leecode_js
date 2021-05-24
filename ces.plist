@@ -1,48 +1,31 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>items</key>
-	<array>
-		<dict>
-			<key>assets</key>
-			<array>
-				<dict>
-					<key>kind</key>
-					<string>software-package</string>
-					<key>url</key>
-					<string>http://www.weblee.top:8000/model.ipa</string>
-				</dict>
-				<dict>
-					<key>kind</key>
-					<string>full-size-image</string>
-					<key>needs-shine</key>
-					<true/>
-					<key>url</key>
-					<string>http://xxxxxxxxxxxxxxxxxx.png</string>
-				</dict>
-				<dict>
-					<key>kind</key>
-					<string>display-image</string>
-					<key>needs-shine</key>
-					<true/>
-					<key>url</key>
-					<string>http://xxxxxxxxxxxxxxxxxx.png</string>
-				</dict>
-			</array>
-			<key>metadata</key>
-			<dict>
-				<key>bundle-identifier</key>
-				<string>com.xxxx.demo</string>
-				<key>bundle-version</key>
-				<string>1.0.0</string>
-				<key>kind</key>
-				<string>software</string>
-				<key>title</key>
-				<string>XXXX App download</string>
-			</dict>
-		</dict>
-	</array>
-</dict>
+  <dict>
+    <key>items</key>
+    <array>
+      <dict>
+        <key>assets</key>
+        <array>
+          <dict>
+            <key>kind</key>
+            <string>software-package</string>
+            <key>url</key>
+            <string><![CDATA[https://www.weblee.top:8000/model.ipa]]></string>
+          </dict>
+        </array>
+        <key>metadata</key>
+        <dict>
+          <key>bundle-identifier</key>
+          <string>com.114390.ceshi</string>
+          <key>bundle-version</key>
+          <string><![CDATA[unknown]]></string>
+          <key>kind</key>
+          <string>software</string>
+          <key>title</key>
+          <string><![CDATA[Test App]]></string>
+        </dict>
+      </dict>
+    </array>
+  </dict>
 </plist>
